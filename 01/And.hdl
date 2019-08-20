@@ -2,6 +2,7 @@
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
 // File name: projects/01/And.hdl
+//CONTRIBUTERS: ANDREW STODDARD | KENNETH WILSON
 
 /**
  * And gate:

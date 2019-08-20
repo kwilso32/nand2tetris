@@ -2,6 +2,7 @@
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
 // File name: projects/01/DMux4Way.hdl
+//CONTRIBUTERS: ANDREW STODDARD | KENNETH WILSON
 
 /**
  * 4-way demultiplexor:
@@ -18,7 +19,7 @@ CHIP DMux4Way {
     PARTS:
     Not(in = sel[0], out = x);
     Not(in = sel[1], out = y);
-    
+
     And(a = x, b = y, out = z);
     And(a = z, b = in, out = a);
 
