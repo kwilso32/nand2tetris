@@ -17,8 +17,5 @@ CHIP Mux {
     Not(in = sel, out = x);
     Nand(a = a, b = x, out = y);
     Nand(a = sel, b = b, out = z);
-    Nand(a = y, b = z, out = out);
-    //FAILED -- Or(a = y, b = z, out = out);
-    //PASSED -- Xor(a = y, b = z, out = out);
-    //PASSED -- Nand(a = y, b = z, out = out);
+    Xor(a = y, b = z, out = out);
 }
