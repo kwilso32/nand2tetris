@@ -17,41 +17,8 @@ CHIP DMux8Way {
     OUT a, b, c, d, e, f, g, h;
 
     PARTS:
-    Not(in = sel[0], out = x);
-    Not(in = sel[1], out = y);
-    Not(in = sel[2], out = z);
-
-
-    And(a = x, b = y, out = u);
-    And(a = u, b = z, out = v);
-    And(a = v, b = in, out = a);
-
-    And(a = sel[0], b = y, out = w);
-    And(a = w, b = z, out = e1);
-    And(a = e1, b = in, out = b);
-
-    And(a = x, b = sel[1], out = i);
-    And(a = i, b = z, out = j);
-    And(a = j, b = in, out = c);
-
-    And(a = sel[0], b = sel[1], out = k);
-    And(a = k, b = z, out = l);
-    And(a = l, b = in, out = d);
-
-    And(a = x, b = y, out = m);
-    And(a = m, b = sel[2], out = n);
-    And(a = n, b = in, out = e);
-
-    And(a = sel[0], b = y, out = o);
-    And(a = o, b = sel[2], out = p);
-    And(a = p, b = in, out = f);
-
-    And(a = x, b = sel[1], out = q);
-    And(a = q, b = sel[2], out = r);
-    And(a = r, b = in, out = g);
-
-    And(a = sel[0], b = sel[1], out = s);
-    And(a = s, b = sel[2], out = t);
-    And(a = t, b = in, out = h);
+    DMux(in = in, sel = sel[2], a = x, b = y);
+    DMux4Way(in = x, sel = sel[0..1], a = a, b = b, c = c, d = d);
+    DMux4Way(in = y, sel = sel[0..1], a = e, b = f, c = g, d = h);
 
 }
