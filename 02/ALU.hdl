@@ -45,24 +45,40 @@ CHIP ALU {
 
     PARTS:
 
-    Mux16(a = x, b = false, sel = zx, out = zerox); // if (zx == 1) set x = 0
+    //Mux16(a = x, b = false, sel = zx, out = zerox); // if (zx == 1) set x = 0
 
-    Mux16(a = y, b = false, sel = zy, out = zeroy); // if (zy == 1) set y = 0
+    //Mux16(a = y, b = false, sel = zy, out = zeroy); // if (zy == 1) set y = 0
 
-    Not16(in = zerox, out = notx);
-    Mux16(a = zerox, b = notx, sel = nx, out = negatexval); // if (nx == 1) set x = !x
-
-    Not16(in = zeroy, out = noty);
-    Mux16(a = zeroy, b = noty, sel = ny, out = negateyval); // if (ny == 1) set y = !y
-
-    And16(a = negatexval, b = negateyval, out = xandy);
-    Add16(a = negatexval, b = negateyval, out = xplusy);
-    Mux16(a = xandy, b = xplusy, sel = f, out = addandout);// if (f == 1)  set out = x + y  && if (f == 0)  set out = x & y
-
-    Not16(in = addandout, out = notout);
-    Mux16(a = addandout, b = notout, sel = no, out = negateoutval); // if (no == 1) set out = !out
+    //Not16(in = zerox, out = notx);
+    //Mux16(a = zerox, b = notx, sel = nx, out = negatexval); // if (nx == 1) set x = !x
 
 
+    //Not16(in = zeroy, out = noty);
+    //Mux16(a = zeroy, b = noty, sel = ny, out = negateyval); // if (ny == 1) set y = !y
+
+    Not16(in = x, out = notx);
+    Not16(in = y, out = noty);
+    
+    Mux4Way16(a = x, b = notx, c = false, d = true, sel[0] = nx, sel[1] = zx, out = xval);
+    Mux4Way16(a = y, b = noty, c = false, d = true, sel[0] = ny, sel[1] = zy, out = yval);
+
+
+    And16(a = xval, b = yval, out = xandy);
+    Add16(a = xval, b = yval, out = xplusy);
+  //  Mux16(a = xandy, b = xplusy, sel = f, out = addandout); // if (f == 1)  set out = x + y  && if (f == 0)  set out = x & y
+
+    Not16(in = xandy, out = notxandy);
+    Not16(in = xplusy, out = notxplusy);
+
+    Mux4Way16(a = xandy, b = notxandy, c = xplusy, d = notxplusy, sel[0] = no, sel[1] = f, out = out, out[0..7] = lasthalf, out[8..15] = firsthalf, out[15] = ng);
+  //  Mux16(a = addandout, b = notout, sel = no, out = out, out[0..7] = lasthalf, out[8..15] = firsthalf, out[15] = ng); // if (no == 1) set out = !out && if (out < 0) set ng = 1
+
+    Or8Way(in = lasthalf, out = or1);
+    Or8Way(in = firsthalf, out = or2);
+    Or(a = or1, b = or2, out = or3);
+    Not(in = or3, out = zr); //if (out == 0) set zr = 1
+
+  //  And(a = firstbit, b = true, out = ng); // if (out < 0) set ng = 1
 
 
 
