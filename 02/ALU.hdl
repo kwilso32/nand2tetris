@@ -2,6 +2,8 @@
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
 // File name: projects/02/ALU.hdl
+//CONTRIBUTERS: ANDREW STODDARD | KENNETH WILSON
+
 
 /**
  * The ALU (Arithmetic Logic Unit).
@@ -48,17 +50,20 @@ CHIP ALU {
     Mux16(a = y, b = false, sel = zy, out = zeroy); // if (zy == 1) set y = 0
 
     Not16(in = zerox, out = notx);
-    Mux16(a = zerox, b = notx, sel = nx, out = notxval); // if (nx == 1) set x = !x
+    Mux16(a = zerox, b = notx, sel = nx, out = negatexval); // if (nx == 1) set x = !x
 
     Not16(in = zeroy, out = noty);
-    Mux16(a = zeroy, b = noty, sel = ny, out = notyval); // if (ny == 1) set y = !y
+    Mux16(a = zeroy, b = noty, sel = ny, out = negateyval); // if (ny == 1) set y = !y
 
-    And(a = x, b = y, out = xandy);
-    Add16(a = x, b = y, out = xplusy);
-    Mux(a = xandy, b = xplusy, sel = f, out = addandout);// if (f == 1)  set out = x + y  && if (f == 0)  set out = x & y
+    And16(a = negatexval, b = negateyval, out = xandy);
+    Add16(a = negatexval, b = negateyval, out = xplusy);
+    Mux16(a = xandy, b = xplusy, sel = f, out = addandout);// if (f == 1)  set out = x + y  && if (f == 0)  set out = x & y
 
     Not16(in = addandout, out = notout);
-    Mux16(a = addandout, b = notout, sel = no, out = outval); // if (no == 1) set out = !out
+    Mux16(a = addandout, b = notout, sel = no, out = negateoutval); // if (no == 1) set out = !out
+
+
+
 
 
 }
