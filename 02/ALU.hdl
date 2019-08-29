@@ -55,8 +55,10 @@ CHIP ALU {
 
     And(a = x, b = y, out = xandy);
     Add16(a = x, b = y, out = xplusy);
-    Mux(a = xandy, b = xplusy, sel = f, out = addandout);// if (f == 1)  set out = x + y  && if (f == 0)  set out = x & y 
+    Mux(a = xandy, b = xplusy, sel = f, out = addandout);// if (f == 1)  set out = x + y  && if (f == 0)  set out = x & y
 
+    Not16(in = addandout, out = notout);
+    Mux16(a = addandout, b = notout, sel = no, out = outval); // if (no == 1) set out = !out
 
 
 }
