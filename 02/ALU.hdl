@@ -16,10 +16,10 @@
 
 // Implementation: the ALU logic manipulates the x and y inputs
 // and operates on the resulting values, as follows:
-// if (zx == 1) set x = 0        // 16-bit constant
-// if (nx == 1) set x = !x       // bitwise not
-// if (zy == 1) set y = 0        // 16-bit constant
-// if (ny == 1) set y = !y       // bitwise not
+// if (zx == 1) set x = 0        // 16-bit constant-------------
+// if (nx == 1) set x = !x       // bitwise not----------------
+// if (zy == 1) set y = 0        // 16-bit constant-------------
+// if (ny == 1) set y = !y       // bitwise not----------
 // if (f == 1)  set out = x + y  // integer 2's complement addition
 // if (f == 0)  set out = x & y  // bitwise and
 // if (no == 1) set out = !out   // bitwise not
@@ -44,11 +44,19 @@ CHIP ALU {
     PARTS:
 
     Mux16(a = x, b = false, sel = zx, out = zerox); // if (zx == 1) set x = 0
+
     Mux16(a = y, b = false, sel = zy, out = zeroy); // if (zy == 1) set y = 0
 
     Not16(in = zerox, out = notx);
     Mux16(a = zerox, b = notx, sel = nx, out = notxval); // if (nx == 1) set x = !x
 
-    
+    Not16(in = zeroy, out = noty);
+    Mux16(a = zeroy, b = noty, sel = ny, out = notyval); // if (ny == 1) set y = !y
+
+    And(a = x, b = y, out = xandy);
+    Add16(a = x, b = y, out = xplusy);
+    Mux(a = xandy, b = xplusy, sel = f, out = addandout);// if (f == 1)  set out = x + y  && if (f == 0)  set out = x & y 
+
+
 
 }
