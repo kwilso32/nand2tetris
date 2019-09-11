@@ -12,53 +12,39 @@
 // "white" in every pixel;
 // the screen should remain fully clear as long as no key is pressed.
 
-(LOOP)
-@24576
-D = M
-@LOOP
-D; JEQ
+(LOOP_START)
 @8192
-D = A
+D=A
 @count
-M = D
-(BLACK_LOOP)
-@count
-D = M
-M = M-1
-@16383
-A = D + A
-M = -1
-@count
-D = M
-@BLACK_LOOP
-D; JGT
-(BLACK_PGM_END)
+M=D
 @24576
-D = M
-@WHITE
-D; JEQ
-@BLACK_PGM_END
-0; JEQ
+D=M
+@BLACK
+D;JNE
+
 (WHITE)
-@8192
-D = A
 @count
-M = D
-(WHITE_LOOP)
-@count
-D = M
-M = M - 1
+D=M
+M=M-1
 @16383
-A = D + A
-M = 0
+A=D+A
+M=0
 @count
-D = M
-@WHITE_LOOP
-D; JGT
-(WHITE_PGM_END)
-@24576
-D = M
-@LOOP
-D; JEQ
-@WHITE_PGM_END
-0; JEQ
+D=M
+@WHITE
+D;JGT
+
+(BLACK)
+@count
+D=M
+M=M-1
+@16383
+A=D+A
+M=-1
+@count
+D=M
+@BLACK
+D;JGT
+
+@LOOP_START
+0;JMP
