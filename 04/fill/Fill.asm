@@ -2,6 +2,7 @@
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
 // File name: projects/04/Fill.asm
+//CONTRIBUTERS: ANDREW STODDARD AND KENNETH WILSON
 
 // Runs an infinite loop that listens to the keyboard input.
 // When a key is pressed (any key), the program blackens the screen,
@@ -12,6 +13,7 @@
 // the screen should remain fully clear as long as no key is pressed.
 
 // Put your code here.
+<<<<<<< HEAD
 @8191
 D=A
 @count
@@ -30,3 +32,5 @@ D;JGT
 (PGM_END)
 @PGM_END
 0;JMP
+=======
+>>>>>>> 1798f8f66564bcffd3dbe10222000ecf6048d081
