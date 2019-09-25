@@ -2,6 +2,7 @@
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
 // File name: projects/05/Computer.hdl
+//CONTRIBUTERS: ANDREW STODDARD AND KENNETH WILSON
 
 /**
  * The HACK computer, including CPU, ROM and RAM.
