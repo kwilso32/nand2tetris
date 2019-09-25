@@ -33,13 +33,13 @@ CHIP CPU {
                          // program (reset==1) or continue executing
                          // the current program (reset==0).
 
-    OUT utM[16],        // M value output
+    OUT outM[16],        // M value output
         writeM,          // Write to M?
         addressM[15],    // Address in data memory (of M)
         pc[15];          // address of next instruction
 
     PARTS:
-    Or16(a = false, b = instruction, out[15] = cinstruction, out[12] = abit, out[11] = nx, out[10] = zx, out[9] = ny, out[8] = zy, out[7] = f, out[6] = no, out[5] = dest1, out[4] = dest2, out[3] = dest3, out[2] = jump1, out[1] = jump2, out[0] = jump3,);
+    Or16(a = false, b = instruction, out[15] = cinstruction, out[12] = abit, out[11] = nx, out[10] = zx, out[9] = ny, out[8] = zy, out[7] = f, out[6] = no, out[5] = dest1, out[4] = dest2, out[3] = dest3, out[2] = jump1, out[1] = jump2, out[0] = jump3);
     Not(in = cinstruction, out = ainstruction);
 
 
@@ -47,8 +47,25 @@ CHIP CPU {
     Or(a = ainstruction, b = alutoareg, out = aregload);
 
     Mux16(a = instruction, b = aluout, sel = cinstruction, out = aregin);
-    ARegister(in = aregin, load = aregload, out = aregout, out[0..14 = addressM];
+    ARegister(in = aregin, load = aregload, out = aregout, out[0..14] = addressM);
 
-    
+    And(a = cinstruction, b = dest2, out = dregload);
+    DRegister(in = aluout, load = dregload, out = dregout);
 
+    Mux16(a = aregout, b = inM, sel = abit, out = aluin);
+
+    ALU(x = dregout, y = aluin, zx = zx, nx = nx, zy = zy, ny = ny, f = f, out = aluout, zr = zr, ng = ng);
+
+    Or(a=ng, b=zr, out=ngzr);             // ngzr = (ng | zr)
+    Not(in=ngzr, out=gt);                  // g = out > 0 = !(ng | zr);  ng = (out < 0);  zr = (out = 0)
+    And(a=ng, b=jump1, out=passLT);          // passLT = (ng & LT)
+    And(a=zr, b=jump2, out=passEQ);          // passEQ = (zr & EQ)
+    And(a=gt, b=jump3, out=passGT);          // passGT = (gt & GT)
+    Or(a=passLT, b=passEQ, out=passLE);
+    Or(a=passLE, b=passGT, out=pass);
+    And(a=cinstruction, b=pass, out=PCload);       // PCload = isC & pass
+
+    And(a = cinstruction, b = dest3, out = writeM);
+
+    PC(in = aregout, load = PCload, inc = true, reset = reset, out[0..14] = pc);
     }
