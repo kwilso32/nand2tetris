@@ -1,0 +1,23 @@
+class Locations{
+  field String name;
+  field Array locations;
+  field int count;
+  constructor Locations new(String locName, int length){
+    let name = locName;
+    let count = 0;
+    let objects = Array.new(length);
+
+  }
+
+  method String getName(){
+    return name;
+  }
+  method Array getLocations(){
+    return locations;
+  }
+  method void addLocation(String location){
+    locations[count] = location;
+    let count = count + 1;
+  }
+
+}

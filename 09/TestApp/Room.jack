@@ -1,0 +1,8 @@
+class Room{
+  field String pathToExit;
+  field Verbs verbs;
+  field Objects objects;
+  field Locations locations;
+
+
+}

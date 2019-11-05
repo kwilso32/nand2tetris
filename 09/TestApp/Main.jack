@@ -1,36 +1,6 @@
 class Main {
   function void main(){
-   do Main.out();
-   return;
+    return;
   }
-  
-  function void out(){
-	var String line;
-    let line = Main.readLine("Enter: ");
-    do Output.printString(line);
-	return;
-	
-	}
-  
-  
 
-  function String readLine(String message) {
-        var String line;
-        var char c;
-
-        do Output.printString(message);
-
-        let line = String.new(50);
-        let c = Keyboard.readChar();
-        while( ~(c = String.newLine()) ) {
-            if( c = String.backSpace() ) {
-                do line.eraseLastChar();
-            }
-            else {
-                do line.appendChar(c);
-            }
-            let c = Keyboard.readChar();
-        }
-        return line;
-    }
 }
