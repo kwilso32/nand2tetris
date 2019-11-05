@@ -1,0 +1,37 @@
+class Compare{
+	function boolean validVerb(String word){
+		if(word =  | word =  | word = ){
+			return true;
+		}
+		return false;
+	}
+	function boolean validNoun(String word){
+		if(word = | word = | word = ){
+			return true;
+		}
+		return false;
+	}
+	function boolean validDeterminer(String word){
+		if(word = the | word = to){
+			return true;
+		}
+		return false;
+	}
+	
+	
+	function boolean validWord(String word){
+		var boolean v;
+		var boolean n;
+		var boolean d;
+		
+		let v = Compare.validVerb();
+		let n = Compare.validNoun();
+		let d = Compare.validDeterminer();
+		
+		if(v | n | d){
+			return true;
+		}
+		return false;
+	}
+
+}

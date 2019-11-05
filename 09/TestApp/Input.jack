@@ -1,20 +1,5 @@
-class Main {
-  function void main(){
-   do Main.out();
-   return;
-  }
-  
-  function void out(){
-	var String line;
-    let line = Main.readLine("Enter: ");
-    do Output.printString(line);
-	return;
-	
-	}
-  
-  
-
-  function String readLine(String message) {
+class Input{
+	  function String readLine(String message) {
         var String line;
         var char c;
 
@@ -33,4 +18,11 @@ class Main {
         }
         return line;
     }
+
+
+
+
+
+
+
 }
