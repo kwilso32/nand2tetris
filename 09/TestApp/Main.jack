@@ -2,5 +2,42 @@ class Main {
   function void main(){
     return;
   }
+<<<<<<< HEAD
 
+=======
+  
+  function Paths createPaths(){
+	var Paths paths;
+	var String path1;
+	var String path2;
+	var String path3;
+	var String path4;
+	var String path5;
+	
+	let paths = Paths.new(5);
+	let path1 = "move chair key grab key unlock door escape";
+	let path2 = "move chair";
+	let path3 = "";
+	let path4 = "";
+	let path5 = "";
+  }
+  
+  function void out(){
+	var String line;
+	var String line2;
+	var boolean bool;
+    let line = Input.readLine("Enter: ");
+	let line2 = Input.readLine("Enter: ");
+	let bool = Compare.compare(line, line2);
+	if(Compare.compare(line, line2)){
+		do Output.printString("Success");
+	} else {
+		do Output.printString("Fail");
+	}
+	return;
+	
+	}
+  
+ 
+>>>>>>> 2760ff4087a3d9ea061ff44234c70898f1b5cd2c
 }
