@@ -34,6 +34,6 @@ class Random {
     function int randRange(int low, int high) {
        var int scale;
        let scale = (M / (high - low + 1));
-       return (LCGRandom.rand() / scale) + low;
+       return (Random.rand() / scale) + low;
     }
 }

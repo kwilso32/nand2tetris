@@ -1,6 +1,11 @@
 class Main {
   function void main(){
+    do Random.setSeed(5);
+    do Output.printInt(Random.randRange(1,200));
+    do Output.printString(" ");
+    do Output.printInt(Random.randRange(1,200));
+    do Output.printString(" ");
+    do Output.printInt(Random.randRange(1,200));
     return;
   }
-
 }
