@@ -6,8 +6,14 @@ class Main {
   
   function void out(){
 	var String line;
-    let line = Main.readLine("Enter: ");
-    do Output.printString(line);
+	var String line2;
+	var boolean bool;
+    let line = Input.readLine("Enter: ");
+	let line2 = Input.readLine("Enter: ");
+	let bool = Compare.compare(line, line2);
+	if(bool){
+		do Output.printString("Hell Ye");
+	}
 	return;
 	
 	}

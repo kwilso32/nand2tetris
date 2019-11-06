@@ -1,37 +1,25 @@
 class Compare{
-	function boolean validVerb(String word){
-		if(word =  | word =  | word = ){
-			return true;
+	function boolean compare(String word1, String word2){
+		var int i;
+		var boolean compare;
+		let compare = false;
+		let i = 0;
+		while(i < word1.length()){
+			if(~(word1.charAt(i) = word2.charAt(i))){
+				return false;
+			}
+			let i = i + 1;
 		}
-		return false;
-	}
-	function boolean validNoun(String word){
-		if(word = | word = | word = ){
-			return true;
+		let i = 0;
+		while(i < word2.length()){
+			if(~(word2.charAt(i) = word1.charAt(i))){
+				return false;
+			}
+			let i = i + 1;
 		}
-		return false;
-	}
-	function boolean validDeterminer(String word){
-		if(word = the | word = to){
-			return true;
-		}
-		return false;
+		return true;
 	}
 	
-	
-	function boolean validWord(String word){
-		var boolean v;
-		var boolean n;
-		var boolean d;
-		
-		let v = Compare.validVerb();
-		let n = Compare.validNoun();
-		let d = Compare.validDeterminer();
-		
-		if(v | n | d){
-			return true;
-		}
-		return false;
-	}
+
 
 }
