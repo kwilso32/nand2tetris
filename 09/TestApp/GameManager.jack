@@ -7,8 +7,36 @@ class GameManager{
   }
 
   method boolean checkUserWin(){
+    if(userAnswer.intValue() = numberOfCircles){
+      return true;
+
+    }
+    return false;
+  }
+
+  method String getUserAnswer(){
+    return userAnswer;
+  }
+
+  method void setUserAnswer(){
+    let userAnswer = Input.readLine("How many circles were there?");
+    return;
+  }
+
+  method void createCircles(int number){
+    var int count;
+    let count = 0;
+    let numberOfCircles = number;
+
+    while(count < numberOfCircles){
+      do drawCircle(2000); //set milliseconds
+      let count = Utils.increment(count);
+    }
+
 
   }
+
+
 
 
 }

@@ -1,12 +1,9 @@
 class CircleGenerator{
-  var int numberOfCircles;
-  constructor CircleGenerator new(){
-    let numberOfCircles = 0;
+  method void drawCircle(int milliseconds){
+    Screen.drawCircle(); // Set Range and Radius
+    Sys.wait(milliseconds);
+    Screen.clearScreen();
   }
 
-  method void getNumberOfCircles(){
-    return numberOfCircles;
-  }
-
-  method void
+  
 }
