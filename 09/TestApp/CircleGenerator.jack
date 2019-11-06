@@ -1,13 +1,32 @@
 class CircleGenerator{
   function void drawCircle(int milliseconds){
-    do Screen.drawCircle(25,30,26); // Set Range and Radius
+    var int x;
+    var int y;
+    var int rad;
+    let x = Random.randRange(10, 502);
+    let y = Random.randRange(10, 246);
+    let rad = CircleGenerator.findRad(x, y);
+    do Screen.drawCircle(x, y, rad); // Set Range and Radius
     do Sys.wait(milliseconds);
     do Screen.clearScreen();
     do Sys.wait(milliseconds);
 
     return;
   }
+  function int findRad(int x, int y){
+    var int rad;
+    let rad = Random.randRange(10, Math.min(x, y));
+    while((rad + x) > 502){
+      let rad = Utils.decrement(rad);
 
-  
+    }
+    while((rad + y) > 246){
+      let rad = Utils.decrement(rad);
+    }
+
+    return rad;
+  }
+
+
 
 }

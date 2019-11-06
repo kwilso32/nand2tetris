@@ -11,4 +11,7 @@ class Utils {
     function int increment(int a){
       return (a + 1);
     }
+    function int decrement(int a){
+      return (a - 1);
+    }
 }

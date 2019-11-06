@@ -1,7 +1,13 @@
 class Main {
   function void main(){
     var GameManager game;
+    var String seed;
+    let seed = Input.readLine("Give a random number more than 0: ");
+    while(Main.validateSeed(seed)){
+      let seed = Input.readLine("Sorry, Try Again: ");
+    }
     let game = GameManager.new();
+    do Random.setSeed(seed.intValue());
     do Main.playGame(game);
     return;
 
@@ -17,5 +23,12 @@ class Main {
 
     }
     return;
+  }
+
+  function boolean validateSeed(int seed){
+    if(seed < 1){
+      return true;
+    }
+    return false;
   }
 }
