@@ -6,6 +6,8 @@ class Main {
     while(Main.validateSeed(seed)){
       let seed = Input.readLine("Sorry, Try Again: ");
     }
+
+
     let game = GameManager.new();
     do Random.setSeed(seed.intValue());
     do Main.playGame(game);
@@ -13,13 +15,30 @@ class Main {
 
   }
   function void playGame(GameManager game){
+    var String playagain;
+    do Screen.clearScreen();
+    do Output.moveCursor(0, 0);
+    do Output.printString("Ready");
+    do Output.printChar(String.newLine());
+    do Sys.wait(1000);
+    do Output.printString("Set");
+    do Output.printChar(String.newLine());
 
-    do game.createCircles(5);
+    do Sys.wait(1000);
+    do Output.printString("GO!");
+    do Sys.wait(1000);
+    do Screen.clearScreen();
+    do game.createCircles(Random.randRange(1, 20));
     do game.setUserAnswer();
     if(game.checkUserWin()){
-      do Output.printString("Win!");
+      let playagain = Input.readLine("You Win! Play again?(yes/no)");
+      if(Compare.compare(playagain, "YES")){
+        do Main.playGame(game);
+      } else{
+        do Output.printString("Good Bye!");
+      }
     } else {
-      do Output.printString("Lose :(");
+      do Output.printString("Game Over! :(");
 
     }
     return;

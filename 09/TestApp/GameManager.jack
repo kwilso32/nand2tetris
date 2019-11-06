@@ -23,6 +23,7 @@ class GameManager{
   }
 
   method void setUserAnswer(){
+    do Output.moveCursor(0, 0);
     let userAnswer = Input.readLine("How many circles were there?");
     return;
   }
@@ -33,7 +34,7 @@ class GameManager{
     let numberOfCircles = number;
 
     while(count < numberOfCircles){
-      do CircleGenerator.drawCircle(2000); //set milliseconds
+      do CircleGenerator.drawCircle(500); //set milliseconds
       let count = Utils.increment(count);
     }
     return;

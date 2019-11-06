@@ -9,7 +9,7 @@ class CircleGenerator{
     do Screen.drawCircle(x, y, rad); // Set Range and Radius
     do Sys.wait(milliseconds);
     do Screen.clearScreen();
-    do Sys.wait(milliseconds);
+    do Sys.wait(Random.randRange(0, milliseconds));
 
     return;
   }
