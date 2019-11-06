@@ -1,0 +1,14 @@
+class GameManager{
+  var int numberOfCircles;
+  var String userAnswer;
+  constructor GameManager new(){
+    let String = String.new(10);
+    let numberOfCircles = 0;
+  }
+
+  method boolean checkUserWin(){
+
+  }
+
+
+}
