@@ -1,3 +1,5 @@
+//Authors: Andrew Stoddard and Kenneth Wilson
+
 class Input{
   function String readLine(String message) {
         var String line;

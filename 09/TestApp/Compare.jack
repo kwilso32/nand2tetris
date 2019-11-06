@@ -1,3 +1,5 @@
+//Authors: Andrew Stoddard and Kenneth Wilson
+
 class Compare{
 	function boolean compare(String word1, String word2){
 		var int i;

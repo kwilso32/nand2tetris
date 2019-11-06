@@ -1,3 +1,5 @@
+//Authors: Andrew Stoddard and Kenneth Wilson
+
 class Utils {
 
     function int mod(int a, int b) {

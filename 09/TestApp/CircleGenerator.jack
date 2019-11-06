@@ -1,3 +1,5 @@
+//Authors: Andrew Stoddard and Kenneth Wilson
+
 class CircleGenerator{
   function void drawCircle(int milliseconds){
     var int x;

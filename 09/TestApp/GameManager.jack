@@ -1,3 +1,5 @@
+//Authors: Andrew Stoddard and Kenneth Wilson
+
 class GameManager{
   field int numberOfCircles;
   field String userAnswer;
