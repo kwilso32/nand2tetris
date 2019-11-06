@@ -11,32 +11,14 @@ class Main {
     let line = Input.readLine("Enter: ");
 	let line2 = Input.readLine("Enter: ");
 	let bool = Compare.compare(line, line2);
-	if(bool){
-		do Output.printString("Hell Ye");
+	if(Compare.compare(line, line2)){
+		do Output.printString("Success");
+	} else {
+		do Output.printString("Fail");
 	}
 	return;
 	
 	}
   
-  
-
-  function String readLine(String message) {
-        var String line;
-        var char c;
-
-        do Output.printString(message);
-
-        let line = String.new(50);
-        let c = Keyboard.readChar();
-        while( ~(c = String.newLine()) ) {
-            if( c = String.backSpace() ) {
-                do line.eraseLastChar();
-            }
-            else {
-                do line.appendChar(c);
-            }
-            let c = Keyboard.readChar();
-        }
-        return line;
-    }
+ 
 }
