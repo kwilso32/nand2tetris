@@ -1,9 +1,13 @@
 class CircleGenerator{
-  method void drawCircle(int milliseconds){
-    Screen.drawCircle(); // Set Range and Radius
-    Sys.wait(milliseconds);
-    Screen.clearScreen();
+  function void drawCircle(int milliseconds){
+    do Screen.drawCircle(25,30,26); // Set Range and Radius
+    do Sys.wait(milliseconds);
+    do Screen.clearScreen();
+    do Sys.wait(milliseconds);
+
+    return;
   }
 
   
+
 }

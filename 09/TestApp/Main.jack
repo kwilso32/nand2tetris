@@ -1,11 +1,21 @@
 class Main {
   function void main(){
-    do Random.setSeed(5);
-    do Output.printInt(Random.randRange(1,200));
-    do Output.printString(" ");
-    do Output.printInt(Random.randRange(1,200));
-    do Output.printString(" ");
-    do Output.printInt(Random.randRange(1,200));
+    var GameManager game;
+    let game = GameManager.new();
+    do Main.playGame(game);
+    return;
+
+  }
+  function void playGame(GameManager game){
+
+    do game.createCircles(5);
+    do game.setUserAnswer();
+    if(game.checkUserWin()){
+      do Output.printString("Win!");
+    } else {
+      do Output.printString("Lose :(");
+
+    }
     return;
   }
 }

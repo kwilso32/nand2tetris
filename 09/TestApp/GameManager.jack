@@ -1,10 +1,14 @@
 class GameManager{
-  var int numberOfCircles;
-  var String userAnswer;
+  field int numberOfCircles;
+  field String userAnswer;
+
   constructor GameManager new(){
-    let String = String.new(10);
+    let userAnswer = String.new(10);
     let numberOfCircles = 0;
+    return this;
   }
+
+
 
   method boolean checkUserWin(){
     if(userAnswer.intValue() = numberOfCircles){
@@ -29,14 +33,10 @@ class GameManager{
     let numberOfCircles = number;
 
     while(count < numberOfCircles){
-      do drawCircle(2000); //set milliseconds
+      do CircleGenerator.drawCircle(2000); //set milliseconds
       let count = Utils.increment(count);
     }
-
-
+    return;
   }
-
-
-
 
 }
